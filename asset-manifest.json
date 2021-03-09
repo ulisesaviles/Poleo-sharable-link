@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Poleo-sharable-link/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/Poleo-sharable-link/static/js/main.e03bf2e8.chunk.js",
+    "main.js.map": "/Poleo-sharable-link/static/js/main.e03bf2e8.chunk.js.map",
+    "runtime-main.js": "/Poleo-sharable-link/static/js/runtime-main.ca0bedf7.js",
+    "runtime-main.js.map": "/Poleo-sharable-link/static/js/runtime-main.ca0bedf7.js.map",
+    "static/js/2.06b6ac3c.chunk.js": "/Poleo-sharable-link/static/js/2.06b6ac3c.chunk.js",
+    "static/js/2.06b6ac3c.chunk.js.map": "/Poleo-sharable-link/static/js/2.06b6ac3c.chunk.js.map",
+    "static/js/3.f84e9742.chunk.js": "/Poleo-sharable-link/static/js/3.f84e9742.chunk.js",
+    "static/js/3.f84e9742.chunk.js.map": "/Poleo-sharable-link/static/js/3.f84e9742.chunk.js.map",
+    "index.html": "/Poleo-sharable-link/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/Poleo-sharable-link/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.06b6ac3c.chunk.js.LICENSE.txt": "/Poleo-sharable-link/static/js/2.06b6ac3c.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/Poleo-sharable-link/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca0bedf7.js",
+    "static/js/2.06b6ac3c.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.e03bf2e8.chunk.js"
+  ]
+}
