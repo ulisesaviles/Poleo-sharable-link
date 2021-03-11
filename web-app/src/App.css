@@ -4,6 +4,7 @@ body {
 }
 .logo-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -15,13 +16,50 @@ body {
   z-index: 100;
   top: 0;
 }
+.super-hide {
+  display: none;
+}
+.pollId-input {
+  border-radius: 100px;
+  position : relative;
+  bottom: 27vh;
+  border: 0;
+  padding: 5px 10px;
+  z-index: 200;
+  width: 50vw;
+  font-size: 18px;
+  max-width: 300px;
+  align-self: center;
+}
+.pollId-btn {
+  position : relative;
+  bottom: 27vh;
+  width: 100px;
+  border-radius: 100px;
+  padding: 5px 30px;
+  margin-top : 20px;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+  align-self: center;
+  text-decoration: none;
+}
+.pollId-btn:hover {
+  transform: scale(1.1);
+}
+.pollId-btn-txt {
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
+}
 .start-screen {
   height: 100vh;
 }
 .logo {
   width: 80vw;
   height: auto;
-  margin-bottom: 20vh;
+  margin-bottom: 30vh;
   transition-property: all;
   transition-duration: 0.7s;
   transition-timing-function: ease-in-out;
@@ -171,6 +209,15 @@ body {
   font-size: 20px;
   margin : 0;
 }
+.check-mark {
+  color : rgb(18, 229, 122);
+  width: 50px;
+  height: auto;
+}
+.loading-gif {
+  height: 50px;
+  width: auto;
+}
 
 
 @media only screen and (min-width: 600px) {
@@ -210,6 +257,16 @@ body {
   .chart-container {
     background-color: rgb(35,35,35);
   }
+  .pollId-input {
+    background-color: rgb(41, 41, 41);
+    color: rgb(255,255,255);
+  }
+  .pollId-btn {
+    background-color: rgb(20, 218, 119);
+  }
+  .pollId-btn-txt {
+    color : rgb(255, 255, 255);
+  } 
 }
 @media (prefers-color-scheme: light) {
   body {
@@ -230,6 +287,16 @@ body {
   }
   .chart-container {
     background-color: rgb(255,255,255);
+  }
+  .pollId-input {
+    background-color: rgb(230, 230, 230);
+    color:rgb(0, 0, 0)
+  }
+  .pollId-btn {
+    background-color: rgb(0, 0, 0);
+  }
+  .pollId-btn-txt {
+    color : rgb(255, 255, 255);
   }
 }
 .multiTextOption-container-selected {

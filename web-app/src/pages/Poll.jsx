@@ -1,11 +1,84 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { MdRadioButtonUnchecked } from "react-icons/md";
+import { MdRadioButtonUnchecked, MdCheckCircle } from "react-icons/md";
 import { HorizontalBar } from "react-chartjs-2";
+import Loading from "../images/dark-loader.gif";
+import logoForLight from "../images/logoForLight.png";
+import logoForDark from "../images/logoForDark.png";
+import { Fade } from "react-awesome-reveal";
 
 const Poll = () => {
-  // localStorage.setItem("answered", "false");
+  // localStorage.setItem("pol1", "true");
+
+  // Header
+  let { pollId } = useParams();
+  console.log(`PollId: ${pollId}`);
+  const [firstLodad, setfirstLoad] = useState(true);
+  const [logo, setLogo] = useState("No data");
+  const [headerClasses, setHeaderClasses] = useState("logo-container start-screen");
+  const [logoClasses, setLogoClasses] = useState("logo");
+  const [pollIdInput, setPollIdInput] = useState("");
+  // Detect theme
+  const [theme, setTheme] = useState("No data");
+  if (theme == "No data") {
+    if (window.matchMedia && 
+      window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme("dark");
+      setLogo(logoForDark);
+    } else {
+      setTheme("light");
+      setLogo(logoForLight);
+    }
+    window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', event => {
+      if (event.matches) {
+        setTheme("dark");
+        setLogo(logoForDark);
+      } else {
+        setTheme("light");
+        setLogo(logoForLight);
+      }
+      })
+  }
+  if (pollId == undefined || pollId.length == 0) {
+    
+  } else {
+    if (firstLodad) {
+      setTimeout(()=>{
+        setHeaderClasses(`logo-container header`);
+        setLogoClasses("logo header-logo")
+      },1000);
+    }
+  }
+
+  function input() {
+    if(pollId == undefined || pollId.length == 0) {
+      console.log("im going to display the input")
+      return(
+        <div style={{  
+          "display": "flex",
+          "flex-direction": "column",
+        }}>
+          <input onChange={(event) => {
+            setPollIdInput(event.target.value.toLowerCase());
+          }} 
+          placeholder="Ingresa el ID"
+          className="pollId-input"
+          />
+          <Link to={`/Poleo-sharable-link/${pollIdInput}`} className="pollId-btn">
+            <h1 className="pollId-btn-txt">
+              Contestar
+            </h1>
+          </Link>
+        </div>
+      );
+    } 
+    else {
+      return(<></>);
+    }
+  }
+  // Header
 
 
   const [updater, update] = useState(false);
@@ -15,35 +88,15 @@ const Poll = () => {
     window.scrollTo(0, 0);
     setScrollToTop(true);
   }
-  
-  // Detect the theme
-  const [theme, setTheme] = useState("No data");
-  if (theme == "No data") {
-    if (window.matchMedia && 
-      window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-    window.matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', event => {
-        if (event.matches) {
-          setTheme("dark");
-        } else {
-          setTheme("light");
-        }
-      })
-  }
 
   const [state, setState] = useState("initial");
   // initial => answering => loadingResults => final
 
   // Know if someone already answered a poll
   const [alreadyAnswered, setAlreadyAnswered] = useState("No data");
-  if (alreadyAnswered == "No data") { 
-    setAlreadyAnswered(localStorage.getItem("answered"));
+  if (alreadyAnswered == "No data" && pollId!= undefined) { 
+    setAlreadyAnswered(localStorage.getItem(pollId));
   };
-  console.log("Already answered: " + alreadyAnswered + ", State: " + state);
   if (alreadyAnswered == "true") {
     setState("loadingResults");
     update(true);
@@ -62,9 +115,8 @@ const Poll = () => {
   if (updater) {
     update(false);
   }
-  let { pollId } = useParams();
   const [poll, setPoll] = useState("No data");
-  if (poll == "No data") {
+  if (poll == "No data" && pollId!= undefined) {
     axios({
       method: "post",
       url:
@@ -94,6 +146,7 @@ const Poll = () => {
       setQuestionClasses("poll-question dissapear-left");
       if (currentQuestionIndex + 1 == poll.questions.length && passedFilter) {
         setState("loadingResults");
+        localStorage.setItem(pollId, "true");
         // Post results
         let dataToPost = {
           userId : "anonim",
@@ -101,8 +154,6 @@ const Poll = () => {
           pollId : pollId,
           answers : answers,
         };
-        console.log("im posting data");
-        console.log(dataToPost);
         axios({
           method: "post",
           url:
@@ -110,7 +161,6 @@ const Poll = () => {
           data: dataToPost,
         });
       } else {
-        console.log("im not posting data");
       }
       if (passedFilter && currentQuestionIndex + 1 < poll.questions.length){
         setTimeout(()=> {
@@ -135,22 +185,18 @@ const Poll = () => {
     }, 500)
   }
   function passedFilter(answerIndex) {
-    console.log("Is filter: " + poll.questions[currentQuestionIndex].filter.isFilter);
     if(poll.questions[currentQuestionIndex].filter.isFilter) { // Is filter
       if(poll.questions[currentQuestionIndex].filter.correctIndexes.indexOf(answerIndex) < 0) { // if it's incorrect
-        localStorage.setItem("answered", "true");
+        localStorage.setItem(pollId, "true");
         setAlreadyAnswered("true");
         setState("loadingResults");
         return false;
       } else { // Is correct
-        console.log("passed the filter");
         return true;
       }
     } else { // Is not a filter
-      console.log("passed the filter");
       let tempAnswers = answers;
       tempAnswers.push(answerIndex);
-      console.log("Current answers: " + tempAnswers);
       setAnswers(tempAnswers);
       return true;
     }
@@ -191,32 +237,38 @@ const Poll = () => {
 
   // Query the results
   const [results, setResults] = useState("No data");
+  console.log(state);
   if(state == "loadingResults") {
-    setState("final");
-    axios({
-      method: "post",
-      url:
-        "https://us-central1-poleoo.cloudfunctions.net/randomNumber",
-      data: {
-        method : "queryResultsByPollId",
-        pollId : pollId,
-      },
-    }).then((response) => {
-      setResults(response.data);
-    });
+    console.log(`Im going to query: ${pollId}`)
+    if (pollId != undefined) {
+      setState("final");
+      axios({
+        method: "post",
+        url:
+          "https://us-central1-poleoo.cloudfunctions.net/randomNumber",
+        data: {
+          method : "queryResultsByPollId",
+          pollId : pollId,
+        },
+      }).then((response) => {
+        setResults(response.data);
+        update(true);
+      });
+    }
   }
 
   // Display results
   function finalState () {
     if (results == "No data") {
-      //////////////////////// Set loading to gif img
       return(
-        <p>Loading final state...</p>
+        <img className="loading-gif" alt="Loading..." src={Loading}/>
       );
     } else if (results == "Poll results are private"){
-      //////////////////////// Style this shit
       return(
-        <p>Thank you fow answering!</p>
+        <>
+          <h3>{poll.defaultLang == "es" ? "Gracias por contestar!" : "Thank you for answering!"}</h3>
+          <MdCheckCircle className="check-mark"/>
+        </>
       );
     } else if(poll != "No data"){
       let labels = [];
@@ -279,6 +331,15 @@ const Poll = () => {
   // Renders
   if (state == "loadingResults" || state == "final") {
     return (
+      <>
+      <div className={headerClasses}>
+        <Fade>
+          <img src={logo} alt="Poleo" className={logoClasses}/>
+          {
+            input()
+          }
+        </Fade>
+      </div>
       <div className="content-container">
         <div className="poll-container">
           <h1 className="">{poll == "No data" ? "Loading results..." : poll.title[poll.defaultLang]}</h1>
@@ -286,9 +347,19 @@ const Poll = () => {
         </div>
         <p style={{color: "rgba(255,255,255,1)"}}>{updater}</p>
       </div>
+      </>
     );
   } else {
     return (
+      <>
+      <div className={headerClasses}>
+        <Fade>
+          <img src={logo} alt="Poleo" className={logoClasses}/>
+          {
+            input()
+          }
+        </Fade>
+      </div>
       <div className="content-container">
         <div className="poll-container">
           <h1 className={questionClasses}>{currentQuestion}</h1>
@@ -306,6 +377,7 @@ const Poll = () => {
         </div>
         <p style={{color: "rgba(255,255,255,1)"}}>{updater}</p>
       </div>
+      </>
     );
   }
 }
@@ -323,4 +395,4 @@ export default Poll;
 // // Post the results on firebase
 // // Prevent the poll from breaking when questions are over
 // // Query the results
-// Display the results
+// // Display the results
