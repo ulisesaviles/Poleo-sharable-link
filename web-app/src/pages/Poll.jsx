@@ -9,11 +9,10 @@ import logoForDark from "../images/logoForDark.png";
 import { Fade } from "react-awesome-reveal";
 
 const Poll = () => {
-  localStorage.setItem("pol1", "true");
+  // localStorage.setItem("pol1", "true");
 
   // Header
   let { pollId } = useParams();
-  console.log(`PollId: ${pollId}`);
   const [firstLodad, setfirstLoad] = useState(true);
   const [logo, setLogo] = useState("No data");
   const [headerClasses, setHeaderClasses] = useState("logo-container start-screen");
@@ -54,7 +53,6 @@ const Poll = () => {
 
   function input() {
     if(pollId == undefined || pollId.length == 0) {
-      console.log("im going to display the input")
       return(
         <div style={{  
           "display": "flex",
@@ -127,7 +125,7 @@ const Poll = () => {
       },
     }).then((response) => {
       setPoll(response.data);
-      if (localStorage.getItem("answered") != "true") {
+      if (localStorage.getItem(pollId) != "true") {
         setState("answering");
       }
       setCurrentQuestion(response.data.questions[currentQuestionIndex].title[response.data.defaultLang]);
@@ -238,9 +236,7 @@ const Poll = () => {
 
   // Query the results
   const [results, setResults] = useState("No data");
-  console.log(state);
   if(state == "loadingResults") {
-    console.log(`Im going to query: ${pollId}`)
     if (pollId != undefined) {
       setState("final");
       axios({
