@@ -9,7 +9,7 @@ import logoForDark from "../images/logoForDark.png";
 import { Fade } from "react-awesome-reveal";
 
 const Poll = () => {
-  // localStorage.setItem("pol1", "true");
+  localStorage.setItem("pol1", "true");
 
   // Header
   let { pollId } = useParams();
@@ -160,6 +160,7 @@ const Poll = () => {
             "https://us-central1-poleoo.cloudfunctions.net/randomNumber",
           data: dataToPost,
         });
+        localStorage.setItem(pollId, "true");
       } else {
       }
       if (passedFilter && currentQuestionIndex + 1 < poll.questions.length){
