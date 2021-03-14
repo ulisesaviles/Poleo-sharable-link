@@ -1,6 +1,6 @@
 {
   "name": "web-app",
-  "homepage": "http://share.poleo.mx/",
+  "homepage": "https://share.poleo.mx/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
