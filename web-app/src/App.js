@@ -50,8 +50,10 @@ function App() {
         </Fade>
       </div> */}
       <Switch>
-        <Route path="/Poleo-sharable-link/:pollId" component={Poll} />
-        <Route path="/Poleo-sharable-link/" component={Poll} />
+        {/* <Route path="/Poleo-sharable-link/:pollId" component={Poll} />
+        <Route path="/Poleo-sharable-link/" component={Poll} /> */}
+        <Route path="/:pollId" component={Poll} />
+        <Route path="/" component={Poll} />
       </Switch>
     </Router>
   );
