@@ -64,7 +64,7 @@ const Poll = () => {
           placeholder="Ingresa el ID"
           className="pollId-input"
           />
-          <Link to={`/Poleo-sharable-link/${pollIdInput}`} className="pollId-btn">
+          <Link to={`/${pollIdInput}`} className="pollId-btn">
             <h1 className="pollId-btn-txt">
               Contestar
             </h1>
