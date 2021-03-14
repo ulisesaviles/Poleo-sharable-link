@@ -1,6 +1,6 @@
 {
   "name": "web-app",
-  "homepage": "http://ulisesaviles.github.io/Poleo-sharable-link/",
+  "homepage": "https://share.poleo.mx/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
