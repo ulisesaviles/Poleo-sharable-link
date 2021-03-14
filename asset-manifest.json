@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Poleo-sharable-link/static/css/main.c25c9f35.chunk.css",
-    "main.js": "/Poleo-sharable-link/static/js/main.ac6376f6.chunk.js",
-    "main.js.map": "/Poleo-sharable-link/static/js/main.ac6376f6.chunk.js.map",
-    "runtime-main.js": "/Poleo-sharable-link/static/js/runtime-main.75b81315.js",
-    "runtime-main.js.map": "/Poleo-sharable-link/static/js/runtime-main.75b81315.js.map",
-    "static/js/2.7771550d.chunk.js": "/Poleo-sharable-link/static/js/2.7771550d.chunk.js",
-    "static/js/2.7771550d.chunk.js.map": "/Poleo-sharable-link/static/js/2.7771550d.chunk.js.map",
-    "static/js/3.5df0de72.chunk.js": "/Poleo-sharable-link/static/js/3.5df0de72.chunk.js",
-    "static/js/3.5df0de72.chunk.js.map": "/Poleo-sharable-link/static/js/3.5df0de72.chunk.js.map",
-    "index.html": "/Poleo-sharable-link/index.html",
-    "static/css/main.c25c9f35.chunk.css.map": "/Poleo-sharable-link/static/css/main.c25c9f35.chunk.css.map",
-    "static/js/2.7771550d.chunk.js.LICENSE.txt": "/Poleo-sharable-link/static/js/2.7771550d.chunk.js.LICENSE.txt",
-    "static/media/dark-loader.824c3104.gif": "/Poleo-sharable-link/static/media/dark-loader.824c3104.gif",
-    "static/media/logoForDark.47b59b98.png": "/Poleo-sharable-link/static/media/logoForDark.47b59b98.png",
-    "static/media/logoForLight.437059c6.png": "/Poleo-sharable-link/static/media/logoForLight.437059c6.png"
+    "main.css": "/static/css/main.c25c9f35.chunk.css",
+    "main.js": "/static/js/main.ac6376f6.chunk.js",
+    "main.js.map": "/static/js/main.ac6376f6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d2f575a2.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d2f575a2.js.map",
+    "static/js/2.9ad3b477.chunk.js": "/static/js/2.9ad3b477.chunk.js",
+    "static/js/2.9ad3b477.chunk.js.map": "/static/js/2.9ad3b477.chunk.js.map",
+    "static/js/3.5df0de72.chunk.js": "/static/js/3.5df0de72.chunk.js",
+    "static/js/3.5df0de72.chunk.js.map": "/static/js/3.5df0de72.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c25c9f35.chunk.css.map": "/static/css/main.c25c9f35.chunk.css.map",
+    "static/js/2.9ad3b477.chunk.js.LICENSE.txt": "/static/js/2.9ad3b477.chunk.js.LICENSE.txt",
+    "static/media/dark-loader.824c3104.gif": "/static/media/dark-loader.824c3104.gif",
+    "static/media/logoForDark.47b59b98.png": "/static/media/logoForDark.47b59b98.png",
+    "static/media/logoForLight.437059c6.png": "/static/media/logoForLight.437059c6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.75b81315.js",
-    "static/js/2.7771550d.chunk.js",
+    "static/js/runtime-main.d2f575a2.js",
+    "static/js/2.9ad3b477.chunk.js",
     "static/css/main.c25c9f35.chunk.css",
     "static/js/main.ac6376f6.chunk.js"
   ]
