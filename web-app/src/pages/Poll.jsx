@@ -8,11 +8,12 @@ import logoForLight from "../images/logoForLight.png";
 import logoForDark from "../images/logoForDark.png";
 import { Fade } from "react-awesome-reveal";
 
-const Poll = () => {
-  // localStorage.setItem("pol1", "true");
-
+const Poll = ({ location }) => {
+  // localStorage.setItem("pol1", "false");
+  // console.log(new URLSearchParams(location.search).get("poll"));
   // Header
-  let { pollId } = useParams();
+  // let { pollId } = useParams();
+  let pollId = new URLSearchParams(location.search).get("poll");
   const [firstLodad, setfirstLoad] = useState(true);
   const [logo, setLogo] = useState("No data");
   const [headerClasses, setHeaderClasses] = useState("logo-container start-screen");
@@ -64,7 +65,8 @@ const Poll = () => {
           placeholder="Ingresa el ID"
           className="pollId-input"
           />
-          <Link to={`/${pollIdInput}`} className="pollId-btn">
+          {/* <Link to={`/${pollIdInput}`} className="pollId-btn"> */}
+          <Link to={`?poll=${pollIdInput}`} className="pollId-btn">
             <h1 className="pollId-btn-txt">
               Contestar
             </h1>
