@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { MdRadioButtonUnchecked, MdCheckCircle } from "react-icons/md";
 import { HorizontalBar } from "react-chartjs-2";
@@ -10,10 +10,8 @@ import { Fade } from "react-awesome-reveal";
 
 const Poll = ({ location }) => {
   // localStorage.setItem("pol1", "false");
-  // console.log(new URLSearchParams(location.search).get("poll"));
   // Header
-  // let { pollId } = useParams();
-  let pollId = new URLSearchParams(location.search).get("poll");
+  let pollId = new URLSearchParams(location.search).get("pollId");
   const [firstLodad, setfirstLoad] = useState(true);
   const [logo, setLogo] = useState("No data");
   const [headerClasses, setHeaderClasses] = useState("logo-container start-screen");
@@ -47,7 +45,8 @@ const Poll = ({ location }) => {
     if (firstLodad) {
       setTimeout(()=>{
         setHeaderClasses(`logo-container header`);
-        setLogoClasses("logo header-logo")
+        setLogoClasses("logo header-logo");
+        setfirstLoad(false);
       },1000);
     }
   }
@@ -65,8 +64,7 @@ const Poll = ({ location }) => {
           placeholder="Ingresa el ID"
           className="pollId-input"
           />
-          {/* <Link to={`/${pollIdInput}`} className="pollId-btn"> */}
-          <Link to={`?poll=${pollIdInput}`} className="pollId-btn">
+          <Link to={`?pollId=${pollIdInput}`} className="pollId-btn">
             <h1 className="pollId-btn-txt">
               Contestar
             </h1>
@@ -382,16 +380,3 @@ const Poll = ({ location }) => {
 }
 
 export default Poll;
-
-// TODO: 
-// Add input to enter the pollId
-// Navigate to the correct url
-// Check if the pollId exists
-// // Verify if the question is a filter
-// //   if it is, then check if the answer was correct
-// //      if it was, then continue
-// //      if not, save the in the browser the fact that you already answered it 
-// // Post the results on firebase
-// // Prevent the poll from breaking when questions are over
-// // Query the results
-// // Display the results
