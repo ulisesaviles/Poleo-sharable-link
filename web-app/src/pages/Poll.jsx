@@ -118,7 +118,7 @@ const Poll = ({ location }) => {
     axios({
       method: "post",
       url:
-        "https://us-central1-poleoo.cloudfunctions.net/randomNumber",
+        "https://us-central1-poleoo.cloudfunctions.net/server",
       data: {
         method : "queryPollByPollId",
         pollId : pollId
@@ -155,7 +155,7 @@ const Poll = ({ location }) => {
         axios({
           method: "post",
           url:
-            "https://us-central1-poleoo.cloudfunctions.net/randomNumber",
+            "https://us-central1-poleoo.cloudfunctions.net/server",
           data: dataToPost,
         });
         localStorage.setItem(pollId, "true");
@@ -242,7 +242,7 @@ const Poll = ({ location }) => {
       axios({
         method: "post",
         url:
-          "https://us-central1-poleoo.cloudfunctions.net/randomNumber",
+          "https://us-central1-poleoo.cloudfunctions.net/server",
         data: {
           method : "queryResultsByPollId",
           pollId : pollId,
